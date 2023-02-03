@@ -17,24 +17,17 @@ public class CustomUser {
     private String email;
     private String password;
     private Boolean active;
-    @OneToMany
-    @JoinColumn(name="roles_custom_user_id")
-    private List<Role> roles;
+    @ManyToOne
+    @JoinColumn(name="custom_user_role")
+    private Role role;
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
+    public CustomUser(String username, String email, String password, Boolean active, Role role,Integer id) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
         this.active = active;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+        this.role = role;
+        this.id=id;
     }
 
     public Integer getId() {
@@ -43,6 +36,9 @@ public class CustomUser {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public CustomUser() {
     }
 
     public String getUsername() {
@@ -69,6 +65,22 @@ public class CustomUser {
         this.password = password;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "CustomUser{" +
@@ -77,7 +89,7 @@ public class CustomUser {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", active=" + active +
-                ", roles='" + roles + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
