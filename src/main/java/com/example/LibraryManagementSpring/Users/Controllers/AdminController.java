@@ -23,7 +23,7 @@ public class AdminController{
     }
 
     @PostMapping("set-role/")
-    public CustomUser assignUserRole(@RequestBody String username,@RequestBody List<Role> role){
+    public CustomUser assignUserRole(@RequestBody String username,@RequestBody Role role){
         return customUserService.setUserRole(username,role);
     }
    @PostMapping("deactivate/")
