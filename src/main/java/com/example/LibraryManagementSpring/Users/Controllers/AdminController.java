@@ -1,5 +1,6 @@
 package com.example.LibraryManagementSpring.Users.Controllers;
 
+import com.example.LibraryManagementSpring.Roles.Models.Role;
 import com.example.LibraryManagementSpring.Users.Models.CustomUser;
 import com.example.LibraryManagementSpring.Users.Repositories.CustomUserRepository;
 import com.example.LibraryManagementSpring.Users.Services.CustomUserService;
@@ -22,7 +23,7 @@ public class AdminController{
     }
 
     @PostMapping("set-role/")
-    public CustomUser assignUserRole(@RequestBody String username,@RequestBody String role){
+    public CustomUser assignUserRole(@RequestBody String username,@RequestBody List<Role> role){
         return customUserService.setUserRole(username,role);
     }
    @PostMapping("deactivate/")
