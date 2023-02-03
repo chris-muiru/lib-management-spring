@@ -18,11 +18,11 @@ public class CustomUserService {
         return customUserRepository.findAll();
     }
 
-    public CustomUser setUserRole(String username,List<Role> role) throws UsernameNotFoundException {
+    public CustomUser setUserRole(String username,Role role) throws UsernameNotFoundException {
         CustomUser user = customUserRepository.findByUsername(username).orElseThrow(
                 ()-> new UsernameNotFoundException("user doesnt exist")
         );
-        user.setRoles(role);
+        user.setRole(role);
         return user;
     }
 
