@@ -1,5 +1,6 @@
 package com.example.LibraryManagementSpring.Users.Services;
 
+import com.example.LibraryManagementSpring.Roles.Models.Role;
 import com.example.LibraryManagementSpring.Users.Models.CustomUser;
 import com.example.LibraryManagementSpring.Users.Repositories.CustomUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class CustomUserService {
         return customUserRepository.findAll();
     }
 
-    public CustomUser setUserRole(String username,String role) throws UsernameNotFoundException {
+    public CustomUser setUserRole(String username,List<Role> role) throws UsernameNotFoundException {
         CustomUser user = customUserRepository.findByUsername(username).orElseThrow(
                 ()-> new UsernameNotFoundException("user doesnt exist")
         );
