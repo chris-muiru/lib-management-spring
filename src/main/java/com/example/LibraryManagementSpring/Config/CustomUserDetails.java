@@ -1,6 +1,7 @@
 package com.example.LibraryManagementSpring.Config;
 
 import com.example.LibraryManagementSpring.Users.Models.CustomUser;
+import org.apache.catalina.realm.GenericPrincipal;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,9 +23,12 @@ public class CustomUserDetails implements UserDetails {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.active= user.getActive();
-        this.authorities= Arrays.stream(
-                        user.getRoles().split(","))
-                .map(SimpleGrantedAuthority::new)
+//        this.authorities= Arrays.stream(
+//                        user.getRoles().split(","))
+//                .map(SimpleGrantedAuthority::new)
+//                .collect(Collectors.toList());
+        this.authorities= user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getRoleName()))
                 .collect(Collectors.toList());
     }
 
