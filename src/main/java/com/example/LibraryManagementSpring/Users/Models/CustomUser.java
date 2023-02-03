@@ -1,7 +1,10 @@
 package com.example.LibraryManagementSpring.Users.Models;
 
 
+import com.example.LibraryManagementSpring.Roles.Models.Role;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class CustomUser {
@@ -14,7 +17,9 @@ public class CustomUser {
     private String email;
     private String password;
     private Boolean active;
-    private String roles;
+    @OneToMany
+    @JoinColumn(name="roles_custom_user_id")
+    private List<Role> roles;
 
     public Boolean getActive() {
         return active;
@@ -24,11 +29,11 @@ public class CustomUser {
         this.active = active;
     }
 
-    public String getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
