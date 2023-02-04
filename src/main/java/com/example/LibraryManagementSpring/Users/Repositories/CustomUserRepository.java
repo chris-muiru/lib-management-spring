@@ -1,6 +1,6 @@
 package com.example.LibraryManagementSpring.Users.Repositories;
 
-import com.example.LibraryManagementSpring.Users.Models.CustomUser;
+import com.example.LibraryManagementSpring.Users.Entities.CustomUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
