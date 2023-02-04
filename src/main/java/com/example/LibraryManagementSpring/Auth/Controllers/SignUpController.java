@@ -1,7 +1,7 @@
 package com.example.LibraryManagementSpring.Auth.Controllers;
 
 import com.example.LibraryManagementSpring.Auth.Services.SignUpService;
-import com.example.LibraryManagementSpring.Users.Models.CustomUser;
+import com.example.LibraryManagementSpring.Users.Entities.CustomUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
