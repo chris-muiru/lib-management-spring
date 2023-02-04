@@ -1,6 +1,6 @@
 package com.example.LibraryManagementSpring.Roles.Services;
 
-import com.example.LibraryManagementSpring.Roles.Models.Role;
+import com.example.LibraryManagementSpring.Roles.Entities.Role;
 import com.example.LibraryManagementSpring.Roles.Repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
