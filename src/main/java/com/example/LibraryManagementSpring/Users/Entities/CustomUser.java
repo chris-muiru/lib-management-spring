@@ -1,10 +1,9 @@
-package com.example.LibraryManagementSpring.Users.Models;
+package com.example.LibraryManagementSpring.Users.Entities;
 
 
-import com.example.LibraryManagementSpring.Roles.Models.Role;
+import com.example.LibraryManagementSpring.Roles.Entities.Role;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class CustomUser {
