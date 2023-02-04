@@ -1,18 +1,13 @@
-package com.example.LibraryManagementSpring.Roles.Models;
-
-import com.example.LibraryManagementSpring.Users.Models.CustomUser;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package com.example.LibraryManagementSpring.Roles.Entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer roleId;
+    @Column(unique = true,nullable = false)
     private String roleName;
 
     public Role(Integer roleId,String roleName) {
