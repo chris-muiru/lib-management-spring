@@ -20,9 +20,15 @@ public class RoleController {
         return  roleService.getRoles();
     }
     @PostMapping ("/new")
-   public Role createNewRole(@RequestBody RoleRequest role){
+    public Role createNewRole(@RequestBody RoleRequest role){
         ModelMapper modelMapper = new ModelMapper();
         Role roleMapped = modelMapper.map(role,Role.class);
         return roleService.createRole(roleMapped);
+    }
+    @PutMapping("/mutate")
+    public Role updateRole(@RequestBody RoleRequest roleRequest,@PathVariable Integer roleId){
+        ModelMapper modelMapper=new ModelMapper();
+        Role roleMapped = modelMapper.map(roleRequest,Role.class);
+        return roleService.updateRoleById(roleMapped,roleId);
     }
 }
