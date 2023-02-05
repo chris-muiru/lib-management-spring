@@ -14,7 +14,7 @@ public class SignUpService {
 
     public CustomUser signUpUser(CustomUser user){
         System.out.println(user.toString());
-        Optional<CustomUser> userExist = customUserRepository.findByUsername(user.getUsername());
+        Optional<CustomUser> userExist = customUserRepository.findCustomUserByUsername(user.getUsername());
         return userExist.orElseGet(() -> customUserRepository.save(user));
     }
 }
