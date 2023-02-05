@@ -18,4 +18,12 @@ public class RoleService {
     public Role createRole(Role role) {
         return roleRepository.save(role);
     }
+
+    public Role updateRoleById(Role roleMapped, Integer roleId){
+        Role queriedRole = roleRepository.findById(roleId).orElseThrow(
+                ()->new IllegalStateException("role doesn't exist")
+        );
+        queriedRole.setRoleName(roleMapped.getRoleName());
+        return roleRepository.save(queriedRole);
+    }
 }
