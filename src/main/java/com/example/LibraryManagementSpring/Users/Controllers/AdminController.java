@@ -30,7 +30,7 @@ import java.util.List;
         return customUserService.setUserRole(customUser);
     }
    @PostMapping("/users/deactivate")
-    public CustomUser deactivateUser(@RequestBody String userDetails){
+    public CustomUser deactivateUser(@RequestBody UserDetailsRequest userDetails){
         ModelMapper modelMapper = new ModelMapper();
         CustomUser userInstance  = modelMapper.map(userDetails,CustomUser.class);
        return customUserService.deactivateUser(userInstance);
