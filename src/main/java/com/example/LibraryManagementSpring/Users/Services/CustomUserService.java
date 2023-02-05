@@ -23,29 +23,32 @@ public class CustomUserService {
         return customUserRepository.findAll();
     }
 
-    public CustomUser setUserRole(CustomUser user) throws Exception {
-        CustomUser customUser = customUserRepository.findByUsername(user.getUsername()).orElseThrow(
+    public CustomUser setUserRole(CustomUser user){
+        CustomUser customUser = customUserRepository.findCustomUserByUsername(user.getUsername()).orElseThrow(
                 ()-> new UsernameNotFoundException("user doesnt exist")
         );
         if(roleRepository.existsByRoleName(user.getRole().getRoleName())){
-            System.out.println(user.toString());
+            System.out.println(user.toString() );
             customUser.setRole(user.getRole());
             return customUserRepository.save(customUser);
         }
-        throw new Exception("role doesn't exist");
+        throw new IllegalStateException("role doesn't exist");
 
     }
 
-    public CustomUser deactivateUser(String username) {
-        CustomUser user = customUserRepository.findByUsername(username).orElseThrow(
+    public CustomUser deactivateUser(CustomUser userInstance) {
+        CustomUser user = customUserRepository.findCustomUserByUsername(userInstance.getEmail()).orElseThrow(
                 ()-> new UsernameNotFoundException("user doesnt exist")
         );
         user.setActive(false);
         return user;
     }
 
-    public void deleteUserByEmail(String email){
-        customUserRepository.deleteByEmail(email);
+    public void deleteUserByEmail(CustomUser userInstance){
+        CustomUser user=customUserRepository.findCustomUserByEmail(userInstance.getEmail()).orElseThrow(
+                ()-> new IllegalStateException("user not found")
+        );
+        customUserRepository.delete(user);
     }
     public CustomUser createNewUser(CustomUser user){
         return customUserRepository.save(user);
