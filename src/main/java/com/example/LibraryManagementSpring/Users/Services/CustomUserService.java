@@ -37,11 +37,12 @@ public class CustomUserService {
     }
 
     public CustomUser deactivateUser(CustomUser userInstance) {
-        CustomUser user = customUserRepository.findCustomUserByUsername(userInstance.getEmail()).orElseThrow(
+        System.out.println(userInstance.toString());
+        CustomUser user = customUserRepository.findCustomUserByUsername(userInstance.getUsername()).orElseThrow(
                 ()-> new UsernameNotFoundException("user doesnt exist")
         );
         user.setActive(false);
-        return user;
+        return customUserRepository.save(user);
     }
 
     public void deleteUserByEmail(CustomUser userInstance){
